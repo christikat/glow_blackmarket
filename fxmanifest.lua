@@ -1,23 +1,26 @@
-fx_version "cerulean"
+fx_version 'cerulean'
+game 'gta5'
+author 'Glowie'
+description 'Blackmarket Deliveries'
+version '1.0'
 
-description "Basic React (TypeScript) & Lua Game Scripts Boilerplate"
-author "Project Error"
-version '1.0.0'
-repository 'https://github.com/project-error/fivem-react-boilerplate-lua'
+shared_script "config.lua"
 
-lua54 'yes'
+client_scripts {
+  "@PolyZone/client.lua",
+  "client/**/*",
+}
 
-games {
-  "gta5",
-  "rdr3"
+server_scripts {
+	'@oxmysql/lib/MySQL.lua',
+  "server/**/*",
 }
 
 ui_page 'web/build/index.html'
 
-client_script "client/**/*"
-server_script "server/**/*"
-
 files {
-	'web/build/index.html',
+  'web/build/index.html',
 	'web/build/**/*',
 }
+
+lua54 'yes'
