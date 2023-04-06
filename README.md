@@ -31,6 +31,10 @@ A black market UI created in React for FiveM QBCore Framework. This script allow
 - Make sure to update `Config.inventory` with the name of your inventory script
 - If enabling police notify, edit `Config.policeNotify` with your police alert function. The default QBCore police notify will not work, since it pings the players location instead of the coords of the the container
 
+## Adding items 
+- Follow the format of the existing items in Config.items to add new items
+- If you have items that require metadata, find the event `glow_blackmarket_sv:finishLooting` and create an if statement checking the item name and adding the metadata into the variable `itemInfo.info`
+
 
 ### Limitation
 In order for the synchronised scene to work, the shipping container's collision must be removed and a new collision object is spawned in. This allows players to walk into the container. In testing, I found when removing the collision of an entity created by the server, the client crashes. This means the container must be spawned client sided.

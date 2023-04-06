@@ -23,6 +23,8 @@ function Config.policeNotify(coords) -- client sided function
     -- Alert sent when order is ready, not when player is opening the container
 end
 
+Config.tabletColour = "dark" -- light or dark
+
 Config.notifs = {
     success = {
         colour = "#009e73",
@@ -76,7 +78,6 @@ Config.tabletAnim = {
     anim = "idle_a",
     prop = "prop_cs_tablet",
 }
-
 
 Config.items = {
     {item = "thermite", label = "Thermite", minStock = 5, maxStock = 5, price = 9999, image = "thermite.png"},

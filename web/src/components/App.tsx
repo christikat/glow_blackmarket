@@ -147,8 +147,8 @@ const App: React.FC = () => {
         })
     }
     return (
-    <div id="tablet">
-        <div id="camera"></div>
+    <div id="tablet" className={ConfigUI.tabletColour === "dark" ? "tablet-dark" : "tablet-light"}>
+        <div id="camera" className={ConfigUI.tabletColour === "dark" ? "camera-dark" : "camera-light"}></div>
         <div id="tablet-screen">
             <Header
                 icon={ConfigUI.paymentType === "crypto" ? <i className={ConfigUI.cryptoIcon}></i> : "$"}

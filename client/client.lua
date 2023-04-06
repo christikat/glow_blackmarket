@@ -415,6 +415,7 @@ RegisterNUICallback("fetchConfig", function(data, cb)
             acronym = Config.cryptoAcronym,
             cryptoIcon = Config.cryptoIcon,
             estDeliveryTime = tostring(math.floor((Config.deliveryTime.min + Config.deliveryTime.max)/2)),
+            tabletColour = Config.tabletColour,
         },
         notifData = Config.notifs,
     })

@@ -17,6 +17,7 @@ export const ConfigUI: IConfigUI = {
   // acronym: "",
   // cryptoIcon: "",
   // estDeliveryTime: "",
+  // tabletColour: "",
 }
 
 export const ConfigNotif: IConfigNotif<INotifStyle> = {
