@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerData = QBCore.Functions.GetPlayerData()
-local marketItems, orderLocation, tabletProp
+local marketItems, orderLocation, tabletProp, currentMoney
 local targetZones = {}
 local displayingUI = false
 
@@ -368,13 +368,14 @@ RegisterNetEvent("glow_blackmarket_cl:enableLocateButton", function(index)
 end)
 
 RegisterNUICallback("getClientData", function(data, cb)
+    currentMoney = PlayerData.money[Config.paymentType]
     if not marketItems then
         QBCore.Functions.TriggerCallback("glow_blackmarket_sv:getMarketItems", function(items)
             marketItems = items
-            cb({ marketItems = marketItems, currencyAmt = PlayerData.money[Config.paymentType] })
+            cb({ marketItems = marketItems, currencyAmt = currentMoney })
         end)
     else
-        cb({ marketItems = marketItems, currencyAmt = PlayerData.money[Config.paymentType] })
+        cb({ marketItems = marketItems, currencyAmt = currentMoney })
     end
 end)
 
@@ -423,6 +424,14 @@ end)
 
 RegisterNetEvent('QBCore:Player:SetPlayerData', function(val)
     PlayerData = val
+    if displayingUI then
+        if PlayerData.money[Config.paymentType] ~= currentMoney then
+            SendNUIMessage({
+                action = "updateCash",
+                data = PlayerData.money[Config.paymentType]
+            })
+        end
+    end
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()

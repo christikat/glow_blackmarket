@@ -93,6 +93,8 @@ const App: React.FC = () => {
         setEpochTime(0);
     })
     
+    useNuiEvent("updateCash", (data: number) => setPlayerCash(data));
+    
     useEffect(() => {
         if (visible) {
             fetchNui<ClientData>("getClientData").then(data => {
